@@ -101,40 +101,121 @@ From the above characteristic table, we can directly write the next state equati
 Q(t+1)=T′Q(t)+TQ(t)′
 ⇒Q(t+1)=T⊕Q(t)
 
-### Procedure
-/* write all the steps invloved */
+## Procedure:
+
+### STEP 1:
+Open Quartus II and select new project and choose the file location.
+
+### STEP 2:
+Module Declaration. Module should have the file name.
+
+### STEPS 3:
+Input-Output Delecaration.
+
+### STEPS 4:
+Use assign declaration and wire to define the functionality of logic circuits.
+
+### STEP 5:
+At the end give endmodule.
+
+### STEP 6:
+Run the program and choose RTL viewer to get RTL realization.
 
 
-
-### PROGRAM 
-/*
+# PROGRAM:
+```
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+
+Developed by: Kamesh D
+RegisterNumber:  22005358
 
 
+SR FLIPFLOP:
 
+module SR(S,R,Clock,Q,Qbar);
+input S,R,Clock;
+output Q,Qbar;
+wire X,Y;
+nand (X,S,Clock);
+nand (Y,R,Clock);
+nand (Q,X,Qbar);
+nand(Qbar,Y,Q);
+endmodule
 
+D FLIPFLOP:
 
+module DF (D,Clock,Q,Qbar);
+input D,Clock;
+output Q,Qbar;
+assign Dbar = ~D;
+wire X,Y;
+nand (X,D,Clock);
+nand (Y,Dbar,Clock);
+nand (Q,X,Qbar);
+nand (Qbar,Y,Q);
+endmodule
 
-### RTL LOGIC FOR FLIPFLOPS 
+JK FLIPFLOP:
 
+module jk(J,K,clk,Q,Qbar);
+input J,K,clk;
+output Q,Qbar;
+wire P,S;
+nand (P,J,clk,Qbar);
+nand (S,K,clk,Q);
+nand (Q,P,Qbar);
+nand (Qbar,S,Q);
+endmodule
 
+T FLIPFLOP:
 
+module TF (T,Clock,Q,Qbar);
+input T,Clock;
+output Q,Qbar;
+wire A,B;
+nand (A,T,Clock,Qbar);
+nand (B,T,Clock,Q);
+nand (Q,A,Qbar);
+nand (Qbar,B,Q);
+endmodule
 
+```
+# OUTPUT:
 
+## RTL LOGIC FOR FLIPFLOPS:
 
+### SR FLIPFLOP:
 
+![](/output1.png)
 
+### D FLIPFLOP:
 
-### TIMING DIGRAMS FOR FLIP FLOPS 
+![](/output2.png)
 
+### JK FLIPFLOP:
 
+![](/output3.png)
 
+### T FLIPFLOP:
+![](/output4.png)
 
+## TIMING DIGRAMS FOR FLIP FLOPS:
 
+### SR FLIPFLOP:
 
+![](/output5.png)
 
+### D FLIPFLOP:
 
-### RESULTS 
+![](/output6.png)
+
+### JK FLIPFLOP:
+
+![](/output7.png)
+
+### T FLIPFLOP:
+
+![](/output8.png)
+
+# RESULTS:
+All the flipflops are implementde using verilog and their functionality has been validated using their functional tables.
